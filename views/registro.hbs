@@ -1,26 +1,19 @@
-<div class="jumbotron">
-
-    <div class="container">
-        <h1>
-            Registro
-        </h1>
-
+<div class="content">
+    <h1>Cadastro de participantes
+    </h1>
+    <div class="main">
         <form action="/registro" method="POST">
+            <h2>
+                <img src="./images/logo.png">
+            </h2>
 
-            <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" class="form-control" name="nome">
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" name="email">
-            </div>
-            <div class="form-group">
-                <label for="pwd">ID-Clash:</label>
-                <input type="text" class="form-control" name="idClash">
-            </div>
-
-            <button type="submit" class="btn btn-lg btn-success">Enviar</button>
+            <h5>Nome:</h5>
+            <input type="text" name="nome" placeholder="Digite seu nome">
+            <h5>Email:</h5>
+            <input type="text" name="email" placeholder="Email CVC">
+            <h5>ID-Clash:</h5>
+            <input type="text" name="idClash" placeholder="#ID Clash">
+            <input type="submit" class="btn btn-lg btn-success" value="Enviar">
         </form>
     </div>
 </div>
