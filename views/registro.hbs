@@ -1,21 +1,86 @@
 <div class="content">
     <h1>Cadastro de participantes
     </h1>
-    <div class="main">
+    <div class="main container">
         <form action="/registro" method="POST">
             <h2>
                 <img src="./images/logo.png">
             </h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Apelido:</h5>
+                            <input type="text" maxlength="10" name="nome" placeholder="Digite seu apelido" required="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Email:</h5>
+                            <input type="text" name="email" placeholder="Email CVC" required="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
 
-            <h5>Nome:</h5>
-            <input type="text" name="nome" placeholder="Digite seu nome">
-            <h5>Email:</h5>
-            <input type="text" name="email" placeholder="Email CVC">
-            <h5>ID-Clash:</h5>
-            <input type="text" name="idClash" placeholder="#ID Clash">
-            <input type="submit" class="btn btn-lg btn-success" value="Enviar">
+                            <h5>ID-Clash:</h5>
+                            <input type="text" name="idClash" placeholder="#ID Clash" required="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    {{!-- <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#myModal">Escolha uma carta</button>                    <input type="text" name="carta" placeholder="Digite o nome da sua carta favorita" required=""> --}}
+                    <h5>Escolhe seu avatar</h5>
+                    <div class="card">
+                        <a class="img-card" href="#" data-toggle="modal" data-target="#myModal">
+                            <img src="./images/cards/archers.png" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-lg btn-success" value="Enviar">
+                </div>
+            </div>
         </form>
+    </div>
+    <div class="container">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal cartas-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Escolha sua carta favorita</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row ">
+                            {{#each cards as |card|}}
+                            <div class="col-xs-12 col-sm-3">
+                                <div class="card">
+                                    <a class="img-card" href="#" data-dismiss="modal">
+                                    {{#if card.isUsed}}
+                                        <img src="./images/cards/{{card.name}}" style="filter: grayscale(100%);"/>
+                                    {{else}}
+                                            <img src="./images/cards/{{card.name}}"  />                                                
+                                    {{/if}}
+                                        </a>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
-{{!-- https://zellwk.com/blog/crud-express-mongodb/ --}}
+
+
+{{!-- https://zellwk.com/blog/crud-express-mongodb/ --}} 
+{{!-- http://officiialgoogle.blogspot.com.br/2016/03/bootstrap-responsive-material-design.html --}}
