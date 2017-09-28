@@ -4,7 +4,7 @@
     <div class="main container">
         <form action="/registro" method="POST">
             <h2>
-                <img src="./images/logo.png">
+                {{!-- <img src="./images/logo.png"> --}}
             </h2>
             <div class="row">
                 <div class="col-md-8">
@@ -31,11 +31,9 @@
                 <div class="col-md-4">
                     {{!-- <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#myModal">Escolha uma carta</button>                    <input type="text" name="carta" placeholder="Digite o nome da sua carta favorita" required=""> --}}
                     <h5>Escolhe seu avatar</h5>
-                    <div class="card">
-                        <a class="img-card" href="#" data-toggle="modal" data-target="#myModal">
-                            <img src="./images/cards/archers.png" />
-                        </a>
-                    </div>
+                    <a href="#" data-toggle="modal" data-target="#myModal">
+                        <img id="img-avatar" src="./images/cards/{{avatar.name}}" />
+                    </a> 
                 </div>
 
                 <div class="col-md-12">
@@ -58,11 +56,11 @@
                             {{#each cards as |card|}}
                             <div class="col-xs-12 col-sm-3">
                                 <div class="card">
-                                    <a class="img-card" href="#" data-dismiss="modal">
+                                    <a class="img-card" href="#" data-dismiss="modal" >
                                     {{#if card.isUsed}}
-                                        <img src="./images/cards/{{card.name}}" style="filter: grayscale(100%);"/>
+                                        <img src="./images/cards/{{card.name}}" style="filter: grayscale(100%);" onclick="alert('Esse avatar já foi escolhido.')"/>
                                     {{else}}
-                                            <img src="./images/cards/{{card.name}}"  />                                                
+                                            <img src="./images/cards/{{card.name}}"  onclick="changeAvatar('{{card.name}}')" />                                                
                                     {{/if}}
                                         </a>
                                 </div>
@@ -82,5 +80,5 @@
 
 
 
-{{!-- https://zellwk.com/blog/crud-express-mongodb/ --}} 
-{{!-- http://officiialgoogle.blogspot.com.br/2016/03/bootstrap-responsive-material-design.html --}}
+{{!-- https://zellwk.com/blog/crud-express-mongodb/ --}} {{!-- http://officiialgoogle.blogspot.com.br/2016/03/bootstrap-responsive-material-design.html
+--}}

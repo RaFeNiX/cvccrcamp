@@ -22,7 +22,8 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.get('/', function (req, res, next) {
     res.render('registro', {
         title: 'Cadastro',
-        cards: cards
+        cards: cards,
+        avatar: cards[0]
     });
 });
 
