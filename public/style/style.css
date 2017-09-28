@@ -195,3 +195,8 @@ p.footer a:hover{
     font-weight:600;
     text-transform: uppercase
   }
+
+  .modal-body{
+    height: 450px;
+    overflow: auto;
+  }

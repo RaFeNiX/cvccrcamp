@@ -1,35 +1,34 @@
 const Promise = require('bluebird')
 const Mongo = require('mongoose')
-const Crypto = require('crypto')
+const crypto = require('crypto')
 
-var db = Mongo.connection.openUri('mongodb://localhost/camps')
+let db = Mongo.connection.openUri('mongodb://localhost/camps')
 db.on('error', console.error.bind(console, 'Erro na conexao: '))
 db.once('open', function () { console.log('Mongo on') })
+let col = db.collection('CVCCamp')
 
-
-let bracket = function (){
-    col = db.collection('CVCCamp');
+let bracket = {
     listCamps: () => {
         return col.find(find({},{Nome:1,_id: 0}))
-    }
+    },
     createCamps: (campName,campObj) => {
         let current_date = (new Date()).valueOf().toString();
         let random = Math.random().toString();        
         col.insert({
             CampId: crypto.createHash('sha1').update(current_date + random).digest('hex'),
             Nome: campName, 
-            Camp: campObj
+            CampSchema: JSON.stringify(campObj)
         })
-    }
+    },
     getCampById: (id) => {
-        return col.find({
+        return col.findOne({
             CampId: id
         })
-    }
-    updateCamps: (CampId,CampObj) => {
-        col.findOneAndUpdate(
+    },
+    updateCamps: (id,CampObj) => {
+        col.update(
             {CampId: id},
-            CampObj
+            {$set : { CampSchema: JSON.stringify(CampObj) } } 
         )
     }
 }
