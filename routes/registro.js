@@ -22,9 +22,14 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.get('/', function (req, res, next) {
     res.render('registro', {
         title: 'Cadastro',
-        cards: cards,
-        avatar: cards[0]
+        cards: cards
     });
+});
+
+router.get('/teste',function(req,res){
+    let a = Math.random();
+    console.log('Deu ',a);
+    res.send({"valor":a});
 });
 
 router.post('/', function (req, res) {

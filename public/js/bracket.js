@@ -44,11 +44,13 @@ let container = $('#brackets'),
         decorator: { edit: edit_fn, render: render_fn }
     }
 function saveFn(data, userData) {
-    $.post(userData,data).always(function(){
-        location.reload();
-    })
+    // $.post(userData,JSON.stringify(data)).always(function(){
+
+    //     //location.reload();
+    // })
+    console.log('save ', typeof (data), JSON.stringify(data));
 }
-containerObj.userData = "http://localhost:3000/camp/save";
+containerObj.userData = "http://localhost:3000/save";
 containerObj.save = saveFn;
 $(function () {
     eval($('#what').html())
